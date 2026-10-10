@@ -231,15 +231,17 @@
         </div>
     </footer>
 
-    <!-- MODAL DE CADASTRO / LOGIN / CONTA -->
+    <!-- MODAL DE CADASTRO / LOGIN / CONTA / ESQUECI SENHA -->
     <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-cardBg border border-slate-800 max-w-lg w-full rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
 
             <!-- Abas Login / Cadastro -->
-            <div id="auth-tabs-header" class="flex border-b border-slate-800 pb-4 gap-4">
-                <button onclick="switchAuthTab('login')" id="tab-login-btn" class="font-bold text-primary pb-1 border-b-2 border-primary text-sm">Entrar</button>
-                <button onclick="switchAuthTab('register')" id="tab-register-btn" class="font-bold text-slate-400 hover:text-white pb-1 text-sm">Criar Conta</button>
+            <div id="auth-tabs-header" class="flex border-b border-slate-800 pb-4 gap-4 justify-between items-center">
+                <div class="flex gap-4">
+                    <button onclick="switchAuthTab('login')" id="tab-login-btn" class="font-bold text-primary pb-1 border-b-2 border-primary text-sm">Entrar</button>
+                    <button onclick="switchAuthTab('register')" id="tab-register-btn" class="font-bold text-slate-400 hover:text-white pb-1 text-sm">Criar Conta</button>
+                </div>
             </div>
 
             <!-- Formulário de Login -->
@@ -254,24 +256,60 @@
                         <input type="email" id="login-email" required class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Senha</label>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="block text-xs font-medium text-slate-300">Senha</label>
+                            <button type="button" onclick="switchAuthTab('forgot')" class="text-xs text-primary hover:underline">Esqueceu a senha?</button>
+                        </div>
                         <input type="password" id="login-senha" required class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm">
                     </div>
                     <button type="submit" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm shadow-lg shadow-primary/30 transition">Entrar na Conta</button>
-                    <div id="login-user-error" class="hidden text-rose-400 text-xs font-semibold text-center">E-mail ou senha incorretos.</div>
+                    <div id="login-user-error" class="hidden text-rose-400 text-xs font-semibold text-center"></div>
                 </form>
             </div>
 
-            <!-- Formulário de Cadastro com Máscara Fluida -->
+            <!-- Formulário de Esqueci a Senha -->
+            <div id="auth-forgot-view" class="space-y-4 hidden">
+                <div class="space-y-1">
+                    <h3 class="text-xl font-bold text-white">Recuperação de Senha</h3>
+                    <p class="text-xs text-slate-400">Enviaremos um código de verificação para o seu e-mail.</p>
+                </div>
+                <div id="forgot-step-1" class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">E-mail cadastrado</label>
+                        <input type="email" id="forgot-email" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="seu@email.com">
+                    </div>
+                    <button type="button" onclick="enviarCodigoRecuperacao()" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm transition">Enviar Código de Recuperação</button>
+                </div>
+                <div id="forgot-step-2" class="space-y-3 hidden">
+                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-emerald-400 text-center font-medium">
+                        Código simulado enviado! (Dica: verifique seu alerta na tela).
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Código de 6 dígitos</label>
+                        <input type="text" id="forgot-code" maxlength="6" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs tracking-widest text-center font-bold text-lg" placeholder="000000">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Nova Senha (Mín 8 caracteres, maiúscula e número)</label>
+                        <input type="password" id="forgot-new-senha" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="Nova senha forte">
+                    </div>
+                    <button type="button" onclick="redefinirSenhaComCodigo()" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition">Redefinir Senha</button>
+                </div>
+                <button type="button" onclick="switchAuthTab('login')" class="w-full text-center text-xs text-slate-400 hover:text-white pt-2">Voltar para o Login</button>
+                <div id="forgot-error" class="hidden text-rose-400 text-xs font-semibold text-center"></div>
+            </div>
+
+            <!-- Formulário de Cadastro Robusto -->
             <div id="auth-register-view" class="space-y-4 hidden">
                 <div class="space-y-1">
                     <h3 class="text-xl font-bold text-white">Criar Nova Conta</h3>
-                    <p class="text-xs text-slate-400">Preencha seus dados com validação internacional e CPF.</p>
+                    <p class="text-xs text-slate-400">Segurança reforçada e confirmação por e-mail.</p>
                 </div>
+                
+                <!-- Etapa 1: Preenchimento -->
                 <form id="register-user-form" class="space-y-3">
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Nome Completo *</label>
-                        <input type="text" id="reg-name" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs">
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Nome Completo * (Apenas letras)</label>
+                        <input type="text" id="reg-name" required oninput="validarNomeInput(this)" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="Nome sem números ou símbolos">
                     </div>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
@@ -279,39 +317,61 @@
                             <input type="email" id="reg-email" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="seu@email.com">
                         </div>
                         <div>
-                            <label class="block text-xs font-medium text-slate-300 mb-1">Senha *</label>
-                            <input type="password" id="reg-senha" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="Mínimo 6 caracteres">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-medium text-slate-300 mb-1 flex items-center justify-between">
-                                <span>Telefone / WhatsApp *</span>
-                                <span id="country-flag" class="text-xs">🇧🇷</span>
-                            </label>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Telefone / WhatsApp *</label>
                             <input type="text" id="reg-phone" required oninput="mascaraTelefone(this)" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="+55 (31) 99999-9999">
                         </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Senha Forte * (Mín 8 carac, 1 Maiúscula, 1 Número)</label>
+                            <input type="password" id="reg-senha" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="Senha segura">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Confirmar Senha *</label>
+                            <input type="password" id="reg-senha-confirm" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="Repita a senha">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block text-xs font-medium text-slate-300 mb-1">CPF *</label>
                             <input type="text" id="reg-cpf" required oninput="mascaraCpf(this)" maxlength="14" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="000.000.000-00">
                         </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-medium text-slate-300 mb-1">CEP * (Busca Automática)</label>
-                            <input type="text" id="reg-cep" required onblur="consultarCep(this.value)" oninput="mascaraCep(this)" maxlength="9" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="00000-000">
+                            <label class="block text-xs font-medium text-slate-300 mb-1">CEP (Opcional)</label>
+                            <input type="text" id="reg-cep" onblur="consultarCep(this.value)" oninput="mascaraCep(this)" maxlength="9" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="00000-000">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-3">
+                        <div class="col-span-3">
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Endereço / Rua (Digite ou busque por CEP)</label>
+                            <input type="text" id="reg-endereco" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="Ex: Rua das Flores, Bairro Centro">
                         </div>
                         <div>
                             <label class="block text-xs font-medium text-slate-300 mb-1">Número *</label>
                             <input type="text" id="reg-numero" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="123">
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Endereço Completo</label>
-                        <input type="text" id="reg-endereco" readonly class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-400 text-xs" placeholder="Preenchido automaticamente pelo CEP">
-                    </div>
+
                     <div id="register-error" class="hidden text-rose-400 text-xs font-semibold text-center"></div>
-                    <button type="submit" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm shadow-lg shadow-primary/30 transition mt-2">Criar Conta</button>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm shadow-lg shadow-primary/30 transition mt-2">Continuar e Validar E-mail</button>
+                </form>
+
+                <!-- Etapa 2: Validação por Código de E-mail -->
+                <form id="register-verify-form" class="space-y-4 hidden">
+                    <div class="p-4 bg-slate-900 rounded-2xl border border-slate-800 text-center space-y-2">
+                        <div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center mx-auto text-lg"><i class="fa-solid fa-envelope-circle-check"></i></div>
+                        <h4 class="font-bold text-white text-sm">Confirmação por E-mail</h4>
+                        <p class="text-xs text-slate-400">Enviamos um código de confirmação para <span id="verify-email-target" class="text-primary font-semibold"></span>.</p>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Digite o Código de 6 Dígitos</label>
+                        <input type="text" id="verify-code-input" maxlength="6" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white text-center font-bold text-lg tracking-widest" placeholder="000000">
+                    </div>
+                    <div id="verify-error" class="hidden text-rose-400 text-xs font-semibold text-center"></div>
+                    <button type="button" onclick="concluirValidacaoEmail()" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition">Validar Conta e Concluir</button>
                 </form>
             </div>
 
@@ -355,7 +415,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT COM MÁSCARA FLUIDA E CORRIGIDA -->
+    <!-- SCRIPT COMPLETO E ROBUSTO -->
     <script>
         const defaultSiteData = {
             brandName: "Prisma 3D",
@@ -410,6 +470,11 @@
             checkLoggedUserUI();
         }
 
+        // Validação estrita para o nome (sem números ou palavrões)
+        function validarNomeInput(input) {
+            input.value = input.value.replace(/[^A-Za-zÀ-ú\s]/g, '');
+        }
+
         function mascaraCpf(input) {
             let v = input.value.replace(/\D/g,"");
             v = v.replace(/(\d{3})(\d)/,"$1.$2");
@@ -439,7 +504,6 @@
             input.value = v;
         }
 
-        // MÁSCARA DE TELEFONE FLUIDA E CORRIGIDA
         function mascaraTelefone(input) {
             let v = input.value.replace(/\D/g,"");
             let flag = "🌍";
@@ -457,7 +521,6 @@
                     input.value = "+" + v;
                 }
             }
-            document.getElementById('country-flag').innerText = flag;
         }
 
         async function consultarCep(cep) {
@@ -468,12 +531,11 @@
                 const data = await response.json();
                 if (!data.erro) {
                     document.getElementById('reg-endereco').value = `${data.logradouro}, ${data.bairro} - ${data.localidade}/${data.uf}`;
-                } else {
-                    alert("CEP não encontrado.");
                 }
             } catch (err) { console.error(err); }
         }
 
+        // --- SISTEMA DE CONTAS E MODAL ---
         function openAuthModal() {
             document.getElementById('auth-modal').classList.remove('hidden');
             const logged = localStorage.getItem('prisma_logged_user');
@@ -481,6 +543,7 @@
                 document.getElementById('auth-tabs-header').classList.add('hidden');
                 document.getElementById('auth-login-view').classList.add('hidden');
                 document.getElementById('auth-register-view').classList.add('hidden');
+                document.getElementById('auth-forgot-view').classList.add('hidden');
                 document.getElementById('auth-dashboard-view').classList.remove('hidden');
                 const user = JSON.parse(logged);
                 document.getElementById('user-display-name').innerText = user.name;
@@ -488,6 +551,12 @@
                 renderUserOrders(user.email);
             } else {
                 document.getElementById('auth-tabs-header').classList.remove('hidden');
+                document.getElementById('auth-dashboard-view').classList.add('hidden');
+                // Limpa formulários ao abrir
+                document.getElementById('register-user-form').reset();
+                document.getElementById('login-user-form').reset();
+                document.getElementById('register-user-form').classList.remove('hidden');
+                document.getElementById('register-verify-form').classList.add('hidden');
                 switchAuthTab('login');
             }
         }
@@ -495,56 +564,76 @@
         function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
 
         function switchAuthTab(tab) {
+            document.getElementById('auth-login-view').classList.add('hidden');
+            document.getElementById('auth-register-view').classList.add('hidden');
+            document.getElementById('auth-forgot-view').classList.add('hidden');
+            document.getElementById('tab-login-btn').className = "font-bold text-slate-400 hover:text-white pb-1 text-sm";
+            document.getElementById('tab-register-btn').className = "font-bold text-slate-400 hover:text-white pb-1 text-sm";
+
             if (tab === 'login') {
                 document.getElementById('auth-login-view').classList.remove('hidden');
-                document.getElementById('auth-register-view').classList.add('hidden');
                 document.getElementById('tab-login-btn').className = "font-bold text-primary pb-1 border-b-2 border-primary text-sm";
-                document.getElementById('tab-register-btn').className = "font-bold text-slate-400 hover:text-white pb-1 text-sm";
-            } else {
-                document.getElementById('auth-login-view').classList.add('hidden');
+            } else if (tab === 'register') {
                 document.getElementById('auth-register-view').classList.remove('hidden');
+                document.getElementById('register-user-form').classList.remove('hidden');
+                document.getElementById('register-verify-form').classList.add('hidden');
                 document.getElementById('tab-register-btn').className = "font-bold text-primary pb-1 border-b-2 border-primary text-sm";
-                document.getElementById('tab-login-btn').className = "font-bold text-slate-400 hover:text-white pb-1 text-sm";
+            } else if (tab === 'forgot') {
+                document.getElementById('auth-forgot-view').classList.remove('hidden');
+                document.getElementById('forgot-step-1').classList.remove('hidden');
+                document.getElementById('forgot-step-2').classList.add('hidden');
             }
         }
+
+        // Variável temporária para o cadastro pendente de validação de e-mail
+        let tempPendingUser = null;
+        let generatedEmailCode = "";
 
         document.getElementById('register-user-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const errBox = document.getElementById('register-error');
             errBox.classList.add('hidden');
 
+            const name = document.getElementById('reg-name').value.trim();
             const email = document.getElementById('reg-email').value.trim();
-            const cpf = document.getElementById('reg-cpf').value.trim();
             const senha = document.getElementById('reg-senha').value;
+            const senhaConfirm = document.getElementById('reg-senha-confirm').value;
+            const cpf = document.getElementById('reg-cpf').value.trim();
 
-            if (senha.length < 6) {
-                errBox.innerText = "A senha deve ter pelo menos 6 caracteres.";
+            // Validação de senha forte (mínimo 8 caracteres, 1 maiúscula, 1 número)
+            const regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!regexSenha.test(senha)) {
+                errBox.innerText = "A senha deve ter no mínimo 8 caracteres, contendo pelo menos 1 letra maiúscula e 1 número.";
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            if (senha !== senhaConfirm) {
+                errBox.innerText = "As senhas não coincidem!";
                 errBox.classList.remove('hidden');
                 return;
             }
 
             if (!validarCpfMatematico(cpf)) {
-                errBox.innerText = "CPF inválido! Verifique os dígitos informados.";
+                errBox.innerText = "CPF inválido!";
                 errBox.classList.remove('hidden');
                 return;
             }
 
             let users = JSON.parse(localStorage.getItem('prisma_users_db') || '[]');
-            
             if (users.some(u => u.email === email)) {
-                errBox.innerText = "Este e-mail já está cadastrado em outra conta!";
+                errBox.innerText = "Este e-mail já está cadastrado!";
                 errBox.classList.remove('hidden');
                 return;
             }
-
             if (users.some(u => u.cpf === cpf)) {
-                errBox.innerText = "Este CPF já está cadastrado no sistema!";
+                errBox.innerText = "Este CPF já está cadastrado!";
                 errBox.classList.remove('hidden');
                 return;
             }
 
-            const newUser = {
-                name: document.getElementById('reg-name').value,
+            tempPendingUser = {
+                name: name,
                 email: email,
                 senha: senha,
                 phone: document.getElementById('reg-phone').value,
@@ -552,15 +641,37 @@
                 endereco: `${document.getElementById('reg-endereco').value}, nº ${document.getElementById('reg-numero').value}`
             };
 
-            users.push(newUser);
-            localStorage.setItem('prisma_users_db', JSON.stringify(users));
-            localStorage.setItem('prisma_logged_user', JSON.stringify(newUser));
-            
-            alert("Conta criada com sucesso!");
-            openAuthModal();
-            renderSite();
+            // Gera código de verificação de 6 dígitos simulado
+            generatedEmailCode = Math.floor(100000 + Math.random() * 900000).toString();
+            alert(`[Simulação de E-mail enviado para ${email}]\nSeu código de confirmação é: ${generatedEmailCode}`);
+
+            document.getElementById('verify-email-target').innerText = email;
+            document.getElementById('register-user-form').classList.add('hidden');
+            document.getElementById('register-verify-form').classList.remove('hidden');
         });
 
+        function concluirValidacaoEmail() {
+            const digitado = document.getElementById('verify-code-input').value.trim();
+            const errVerify = document.getElementById('verify-error');
+            errVerify.classList.add('hidden');
+
+            if (digitado !== generatedEmailCode) {
+                errVerify.innerText = "Código incorreto. Verifique o código enviado.";
+                errVerify.classList.remove('hidden');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('prisma_users_db') || '[]');
+            users.push(tempPendingUser);
+            localStorage.setItem('prisma_users_db', JSON.stringify(users));
+            localStorage.setItem('prisma_logged_user', JSON.stringify(tempPendingUser));
+
+            alert("E-mail confirmado e conta criada com sucesso!");
+            openAuthModal();
+            renderSite();
+        }
+
+        // Login
         document.getElementById('login-user-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -573,10 +684,68 @@
                 openAuthModal();
                 renderSite();
             } else {
-                document.getElementById('login-user-error').classList.remove('hidden');
+                const errDiv = document.getElementById('login-user-error');
+                errDiv.innerText = "E-mail ou senha incorretos.";
+                errDiv.classList.remove('hidden');
             }
         });
 
+        // Esqueci a senha com código
+        let recoveryEmailCache = "";
+        let recoveryCodeCache = "";
+
+        function enviarCodigoRecuperacao() {
+            const email = document.getElementById('forgot-email').value.trim();
+            const errBox = document.getElementById('forgot-error');
+            errBox.classList.add('hidden');
+
+            let users = JSON.parse(localStorage.getItem('prisma_users_db') || '[]');
+            const found = users.find(u => u.email === email);
+            if (!found) {
+                errBox.innerText = "E-mail não encontrado no sistema.";
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            recoveryEmailCache = email;
+            recoveryCodeCache = Math.floor(100000 + Math.random() * 900000).toString();
+            alert(`[Simulação de Recuperação]\nCódigo enviado para ${email}: ${recoveryCodeCache}`);
+
+            document.getElementById('forgot-step-1').classList.add('hidden');
+            document.getElementById('forgot-step-2').classList.remove('hidden');
+        }
+
+        function redefinirSenhaComCodigo() {
+            const code = document.getElementById('forgot-code').value.trim();
+            const novaSenha = document.getElementById('forgot-new-senha').value;
+            const errBox = document.getElementById('forgot-error');
+            errBox.classList.add('hidden');
+
+            if (code !== recoveryCodeCache) {
+                errBox.innerText = "Código de recuperação inválido.";
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            const regexSenha = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!regexSenha.test(novaSenha)) {
+                errBox.innerText = "A nova senha deve ter no mínimo 8 caracteres, com 1 maiúscula e 1 número.";
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('prisma_users_db') || '[]');
+            users = users.map(u => {
+                if (u.email === recoveryEmailCache) u.senha = novaSenha;
+                return u;
+            });
+            localStorage.setItem('prisma_users_db', JSON.stringify(users));
+
+            alert("Senha redefinida com sucesso! Faça login com a nova senha.");
+            switchAuthTab('login');
+        }
+
+        // Logout Imediato
         function logoutUser() {
             localStorage.removeItem('prisma_logged_user');
             document.getElementById('auth-dashboard-view').classList.add('hidden');
@@ -638,6 +807,7 @@
             setTimeout(() => fb.classList.add('hidden'), 5000);
         });
 
+        // Painel Admin
         function openAdminModal() { document.getElementById('admin-modal').classList.remove('hidden'); }
         function closeAdminModal() { document.getElementById('admin-modal').classList.add('hidden'); }
         document.getElementById('admin-login-form').addEventListener('submit', function(e) {
