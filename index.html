@@ -46,7 +46,6 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <!-- Área do Cliente (Login / Conta) -->
                 <div id="auth-nav-container">
                     <button onclick="openAuthModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition flex items-center gap-2">
                         <i class="fa-solid fa-user text-primary"></i> <span id="auth-btn-text">Entrar / Cadastrar</span>
@@ -77,7 +76,7 @@
                         Transforme suas ideias em <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">peças reais</span> com acabamento impecável.
                     </h1>
                     <p class="text-slate-400 text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Serviço profissional de impressão 3D sob encomenda para projetos criativos, protótipos industriais, peças técnicas e brindes personalizados. Qualidade e precisão milimétrica.
+                        Serviço profissional de impressão 3D sob encomenda para projetos criativos, protótipos industriais, peças técnicas e brindes personalizados.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
                         <a href="#orcamento" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-base shadow-xl shadow-primary/30 transition text-center flex items-center justify-center gap-2">
@@ -96,20 +95,6 @@
                                 <div class="absolute inset-0 bg-gradient-to-t from-darkBg/90 via-transparent to-transparent"></div>
                                 <span class="absolute bottom-4 left-4 px-3.5 py-1.5 bg-primary/90 text-white text-xs font-bold rounded-lg backdrop-blur-sm shadow-md">Bambu Lab A1 + AMS Lite</span>
                             </div>
-                            <div class="grid grid-cols-3 gap-3 pt-2 text-center">
-                                <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
-                                    <div class="text-primary font-black text-xl">0.08mm</div>
-                                    <div class="text-xs text-slate-400 mt-0.5">Resolução</div>
-                                </div>
-                                <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
-                                    <div class="text-primary font-black text-xl">Multicolor</div>
-                                    <div class="text-xs text-slate-400 mt-0.5">Até 4 Cores</div>
-                                </div>
-                                <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
-                                    <div class="text-primary font-black text-xl">PLA/PETG</div>
-                                    <div class="text-xs text-slate-400 mt-0.5">Alta Rigidez</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,9 +108,7 @@
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <span class="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20">Soluções Completas</span>
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Nossos Serviços Especializados</h2>
-                <p class="text-slate-400 text-base sm:text-lg">Atendemos desde demandas pontuais para hobbystas até produção em lote para pequenos negócios e indústrias.</p>
             </div>
-            
             <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
@@ -134,11 +117,9 @@
     <section id="portfolio" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20">Galeria de Trabalhos</span>
+                <span class="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20">Galeria</span>
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Projetos Executados</h2>
-                <p class="text-slate-400 text-base sm:text-lg">Confira a qualidade de acabamento, fidelidade de cores e riqueza de detalhes das peças fabricadas em nosso laboratório.</p>
             </div>
-
             <div id="portfolio-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
@@ -150,40 +131,13 @@
                 <div class="lg:col-span-6 space-y-6">
                     <span class="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20">Sobre a Marca</span>
                     <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Precisão industrial e atendimento consultivo</h2>
-                    <p class="text-slate-300 text-base leading-relaxed">
-                        Acreditamos que a fabricação aditiva vai muito além de apertar um botão: exige conhecimento técnico em orientação de camadas, densidade de preenchimento e escolha correta de materiais para garantir resistência mecânica e estética impecável.
-                    </p>
-                    <div class="space-y-4 pt-2">
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-cardBg border border-slate-800">
-                            <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary shrink-0">
-                                <i class="fa-solid fa-shield-halved"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white">Garantia de Qualidade</h4>
-                                <p class="text-sm text-slate-400 mt-1">Inspecionamos rigorosamente cada peça antes do envio, garantindo ausência de falhas estruturais.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="text-slate-300 text-base leading-relaxed">Acreditamos que a fabricação aditiva exige conhecimento técnico em orientação de camadas e escolha correta de materiais para garantir resistência mecânica e estética impecável.</p>
                 </div>
                 <div class="lg:col-span-6">
                     <div class="rounded-3xl p-1 bg-gradient-to-tr from-primary to-emerald-400 shadow-2xl">
                         <div class="bg-cardBg rounded-[22px] p-8 space-y-6">
-                            <h3 class="text-xl font-bold text-white flex items-center gap-3">
-                                <i class="fa-solid fa-microchip text-primary"></i> Infraestrutura Tecnológica
-                            </h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">
-                                Nossa estrutura é equipada com sistemas de ponta que asseguram calibração automática de fluxo e troca inteligente de filamentos multicoloridos.
-                            </p>
-                            <div class="space-y-3 pt-2 border-t border-slate-800">
-                                <div class="flex items-center justify-between text-sm">
-                                    <span class="text-slate-400">Modelo de Impressora:</span>
-                                    <span class="font-semibold text-white">Bambu Lab A1 Combo</span>
-                                </div>
-                                <div class="flex items-center justify-between text-sm">
-                                    <span class="text-slate-400">Sistema Multicor:</span>
-                                    <span class="font-semibold text-white">AMS Lite Integrado</span>
-                                </div>
-                            </div>
+                            <h3 class="text-xl font-bold text-white flex items-center gap-3"><i class="fa-solid fa-microchip text-primary"></i> Infraestrutura Tecnológica</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">Bambu Lab A1 Combo com AMS Lite integrado (até 4 cores simultâneas).</p>
                         </div>
                     </div>
                 </div>
@@ -195,11 +149,8 @@
     <section id="faq" class="py-24">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 space-y-4">
-                <span class="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20">Dúvidas Comuns</span>
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Perguntas Frequentes</h2>
-                <p class="text-slate-400 text-base">Tudo o que você precisa saber sobre arquivos, prazos e processos de fabricação.</p>
             </div>
-            
             <div id="faq-container" class="space-y-4"></div>
         </div>
     </section>
@@ -211,7 +162,6 @@
                 <div class="text-center space-y-3">
                     <span class="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20">Atendimento Rápido</span>
                     <h2 class="text-3xl font-extrabold text-white">Solicite Seu Orçamento</h2>
-                    <p class="text-slate-400 text-sm sm:text-base">Preencha os campos abaixo. Clientes logados têm os dados preenchidos automaticamente e acesso ao histórico!</p>
                 </div>
 
                 <form id="quote-form" class="space-y-6">
@@ -229,7 +179,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">WhatsApp / Telefone *</label>
-                            <input type="text" id="quote-phone" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-primary transition" placeholder="(31) 99999-9999">
+                            <input type="text" id="quote-phone" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-primary transition" placeholder="+55 (31) 99999-9999">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Tipo de Peça / Projeto *</label>
@@ -244,7 +194,7 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Cor Desejada</label>
-                            <input type="text" id="quote-color" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-primary transition" placeholder="Ex: Preto, Branco, Azul">
+                            <input type="text" id="quote-color" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-primary transition" placeholder="Ex: Preto, Branco">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Material</label>
@@ -257,8 +207,8 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">Descrição do Projeto / Dimensões Aproximadas</label>
-                        <textarea id="quote-desc" rows="4" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-primary transition" placeholder="Descreva medidas, acabamento ou link do modelo 3D..."></textarea>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Descrição / Dimensões</label>
+                        <textarea id="quote-desc" rows="4" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-primary transition" placeholder="Descreva medidas ou link do modelo..."></textarea>
                     </div>
 
                     <button type="submit" class="w-full py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-base shadow-xl shadow-primary/30 transition flex items-center justify-center gap-2">
@@ -278,20 +228,16 @@
                 <span id="footer-brand" class="font-bold text-white">Prisma 3D</span>
             </div>
             <p id="footer-copy">© 2026 Prisma 3D. Todos os direitos reservados.</p>
-            <div class="flex items-center gap-4 text-lg">
-                <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
         </div>
     </footer>
 
-    <!-- MODAL DE CADASTRO / LOGIN / CONTA DO CLIENTE -->
+    <!-- MODAL DE CADASTRO / LOGIN / CONTA COM VALIDAÇÃO AVANÇADA -->
     <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-cardBg border border-slate-800 max-w-lg w-full rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
 
             <!-- Abas Login / Cadastro -->
-            <div class="flex border-b border-slate-800 pb-4 gap-4">
+            <div id="auth-tabs-header" class="flex border-b border-slate-800 pb-4 gap-4">
                 <button onclick="switchAuthTab('login')" id="tab-login-btn" class="font-bold text-primary pb-1 border-b-2 border-primary text-sm">Entrar</button>
                 <button onclick="switchAuthTab('register')" id="tab-register-btn" class="font-bold text-slate-400 hover:text-white pb-1 text-sm">Criar Conta</button>
             </div>
@@ -316,11 +262,11 @@
                 </form>
             </div>
 
-            <!-- Formulário de Cadastro (Com CEP, CPF, etc) -->
+            <!-- Formulário de Cadastro com Máscaras e Validações -->
             <div id="auth-register-view" class="space-y-4 hidden">
                 <div class="space-y-1">
                     <h3 class="text-xl font-bold text-white">Criar Nova Conta</h3>
-                    <p class="text-xs text-slate-400">Preencha seus dados para agilizar seus orçamentos.</p>
+                    <p class="text-xs text-slate-400">Preencha seus dados com validação internacional e CPF.</p>
                 </div>
                 <form id="register-user-form" class="space-y-3">
                     <div>
@@ -330,27 +276,30 @@
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block text-xs font-medium text-slate-300 mb-1">E-mail *</label>
-                            <input type="email" id="reg-email" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs">
+                            <input type="email" id="reg-email" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="seu@email.com">
                         </div>
                         <div>
                             <label class="block text-xs font-medium text-slate-300 mb-1">Senha *</label>
-                            <input type="password" id="reg-senha" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs">
+                            <input type="password" id="reg-senha" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="Mínimo 6 caracteres">
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-medium text-slate-300 mb-1">Telefone / WhatsApp *</label>
-                            <input type="text" id="reg-phone" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="(31) 99999-9999">
+                            <label class="block text-xs font-medium text-slate-300 mb-1 flex items-center justify-between">
+                                <span>Telefone / WhatsApp *</span>
+                                <span id="country-flag" class="text-xs">🇧🇷</span>
+                            </label>
+                            <input type="text" id="reg-phone" required oninput="mascaraTelefone(this)" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="+55 (31) 99999-9999">
                         </div>
                         <div>
                             <label class="block text-xs font-medium text-slate-300 mb-1">CPF *</label>
-                            <input type="text" id="reg-cpf" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="000.000.000-00">
+                            <input type="text" id="reg-cpf" required oninput="mascaraCpf(this)" maxlength="14" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="000.000.000-00">
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block text-xs font-medium text-slate-300 mb-1">CEP * (Busca Automática)</label>
-                            <input type="text" id="reg-cep" required onblur="consultarCep(this.value)" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="00000-000">
+                            <input type="text" id="reg-cep" required onblur="consultarCep(this.value)" oninput="mascaraCep(this)" maxlength="9" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs" placeholder="00000-000">
                         </div>
                         <div>
                             <label class="block text-xs font-medium text-slate-300 mb-1">Número *</label>
@@ -358,111 +307,71 @@
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Endereço (Rua / Bairro / Cidade)</label>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Endereço Completo</label>
                         <input type="text" id="reg-endereco" readonly class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-400 text-xs" placeholder="Preenchido automaticamente pelo CEP">
                     </div>
-                    <button type="submit" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm shadow-lg shadow-primary/30 transition mt-2">Cadastrar Conta</button>
+                    <div id="register-error" class="hidden text-rose-400 text-xs font-semibold text-center"></div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm shadow-lg shadow-primary/30 transition mt-2">Criar Conta</button>
                 </form>
             </div>
 
-            <!-- Painel do Cliente Logado -->
+            <!-- Painel do Cliente Logado (Com Botão de Sair Corrigido) -->
             <div id="auth-dashboard-view" class="space-y-4 hidden">
                 <div class="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
                     <span class="text-xs font-bold text-primary uppercase">Conta Conectada</span>
-                    <h4 id="user-display-name" class="text-lg font-bold text-white">Nome do Usuário</h4>
+                    <h4 id="user-display-name" class="text-lg font-bold text-white">Nome</h4>
                     <p id="user-display-email" class="text-xs text-slate-400">email@provedor.com</p>
                 </div>
                 <div class="space-y-2">
                     <h5 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Meus Orçamentos Solicitados</h5>
-                    <div id="user-orders-list" class="space-y-2 max-h-40 overflow-y-auto">
-                        <!-- Histórico inserido via JS -->
-                    </div>
+                    <div id="user-orders-list" class="space-y-2 max-h-40 overflow-y-auto"></div>
                 </div>
-                <button onclick="logoutUser()" class="w-full py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 font-bold text-xs hover:bg-rose-500 hover:text-white transition">Sair da Conta</button>
+                <button onclick="logoutUser()" class="w-full py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 font-bold text-xs hover:bg-rose-500 hover:text-white transition cursor-pointer">Sair da Conta</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DO PAINEL ADMINISTRATIVO -->
+    <!-- MODAL DO PAINEL ADMIN -->
     <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-cardBg border border-slate-800 max-w-4xl w-full rounded-3xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl">
             <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-bold">P</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">Painel Administrativo</h3>
-                        <p class="text-xs text-slate-400">Gerencie textos, serviços e portfólio em tempo real</p>
-                    </div>
-                </div>
-                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <h3 class="text-xl font-bold text-white">Painel Administrativo</h3>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
-            <!-- Tela de Senha -->
             <div id="admin-auth-view" class="space-y-4 py-6 text-center max-w-md mx-auto">
-                <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/30 text-primary flex items-center justify-center text-xl mx-auto"><i class="fa-solid fa-lock"></i></div>
-                <h4 class="text-lg font-bold text-white">Acesso Restrito</h4>
-                <p class="text-xs text-slate-400">Digite a senha administrativa (Senha padrão: <code class="text-primary font-bold">admin123</code>)</p>
-                <form id="admin-login-form" class="space-y-4 pt-2">
-                    <input type="password" id="admin-password-input" required placeholder="Senha de acesso" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white text-center focus:outline-none focus:border-primary">
-                    <button type="submit" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm shadow-lg shadow-primary/30 transition">Desbloquear Painel</button>
-                    <div id="admin-login-error" class="hidden text-rose-400 text-xs font-semibold">Senha incorreta. Tente "admin123".</div>
+                <form id="admin-login-form" class="space-y-4">
+                    <input type="password" id="admin-password-input" required placeholder="Senha (admin123)" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white text-center">
+                    <button type="submit" class="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm">Entrar</button>
+                    <div id="admin-login-error" class="hidden text-rose-400 text-xs">Senha incorreta.</div>
                 </form>
             </div>
-
-            <!-- Conteúdo do Painel Admin -->
-            <div id="admin-content-view" class="hidden space-y-8">
-                <div class="space-y-4">
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-primary">Configurações Gerais</h4>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Nome da Marca</label>
-                        <input type="text" id="admin-brand-input" class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm">
-                    </div>
+            <div id="admin-content-view" class="hidden space-y-6">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Nome da Marca</label>
+                    <input type="text" id="admin-brand-input" class="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm">
                 </div>
-
-                <div class="space-y-4 border-t border-slate-800 pt-6">
-                    <div class="flex items-center justify-between">
-                        <h4 class="text-sm font-bold uppercase tracking-wider text-primary">Gerenciar Serviços</h4>
-                        <button onclick="addAdminService()" class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold"><i class="fa-solid fa-plus mr-1"></i> Adicionar</button>
-                    </div>
-                    <div id="admin-services-list" class="space-y-3"></div>
-                </div>
-
-                <div class="space-y-4 border-t border-slate-800 pt-6">
-                    <div class="flex items-center justify-between">
-                        <h4 class="text-sm font-bold uppercase tracking-wider text-primary">Gerenciar Portfólio</h4>
-                        <button onclick="addAdminPortfolio()" class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold"><i class="fa-solid fa-plus mr-1"></i> Adicionar</button>
-                    </div>
-                    <div id="admin-portfolio-list" class="space-y-3"></div>
-                </div>
-
-                <div class="pt-6 border-t border-slate-800 flex items-center justify-end gap-4">
-                    <button onclick="closeAdminModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm transition">Cancelar</button>
-                    <button onclick="saveAdminChanges()" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 transition flex items-center gap-2">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> Salvar e Publicar
-                    </button>
-                </div>
+                <button onclick="saveAdminChanges()" class="px-6 py-2.5 rounded-xl bg-emerald-500 text-white font-bold text-sm">Salvar e Publicar</button>
             </div>
         </div>
     </div>
 
-    <!-- Script Geral do Sistema, Contas, CEP e Admin -->
+    <!-- SCRIPT DE VALIDAÇÕES, MÁSCARAS E CONTAS -->
     <script>
         const defaultSiteData = {
             brandName: "Prisma 3D",
             services: [
-                { title: "Peças Personalizadas", desc: "Desenvolvimento e fabricação de itens exclusivos sob medida para atender suas necessidades exatas.", icon: "fa-cube" },
-                { title: "Brindes e Chaveiros", desc: "Brindes corporativos marcantes, personalizados com alta definição de cores e excelente acabamento.", icon: "fa-key" },
-                { title: "Prototipagem Rápida", desc: "Valide seu projeto físico com protótipos funcionais impressos em alta precisão e rigidez.", icon: "fa-gears" }
+                { title: "Peças Personalizadas", desc: "Desenvolvimento de itens exclusivos sob medida.", icon: "fa-cube" },
+                { title: "Brindes e Chaveiros", desc: "Brindes corporativos marcantes.", icon: "fa-key" },
+                { title: "Prototipagem Rápida", desc: "Protótipos funcionais impressos em alta precisão.", icon: "fa-gears" }
             ],
             portfolio: [
-                { title: "Miniatura Colecionável Detalhada", category: "Miniaturas", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" },
-                { title: "Suporte Ergonômico para Setup", category: "Utilitários", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
-                { title: "Logotipo 3D Corp. Decorativo", category: "Decoração", image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" }
+                { title: "Miniatura Colecionável", category: "Miniaturas", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" },
+                { title: "Suporte Ergonômico", category: "Utilitários", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
+                { title: "Logotipo 3D Decorativo", category: "Decoração", image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" }
             ],
             faq: [
-                { q: "Quais materiais vocês utilizam na impressão?", a: "Trabalhamos com filamentos PLA e PLA+ de alta qualidade, que oferecem excelente rigidez e acabamento superficial." },
-                { q: "Qual é o prazo médio de produção das peças?", a: "O prazo varia conforme a complexidade e quantidade, situando-se geralmente entre 2 a 5 dias úteis." },
-                { q: "Como faço para enviar meu arquivo 3D?", a: "Você pode nos informar os detalhes da sua ideia ou enviar o link do modelo nos formatos padrão (.STL, .3MF, .OBJ)." }
+                { q: "Quais materiais vocês utilizam?", a: "Trabalhamos com filamentos PLA e PLA+ de alta qualidade." },
+                { q: "Qual o prazo médio?", a: "Geralmente entre 2 a 5 dias úteis." }
             ]
         };
 
@@ -477,41 +386,75 @@
             document.getElementById('footer-brand').innerText = data.brandName || "Prisma 3D";
 
             document.getElementById('services-container').innerHTML = (data.services || []).map(s => `
-                <div class="bg-cardBg p-8 rounded-3xl border border-slate-800 hover:border-primary/50 transition space-y-4 group">
-                    <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-xl group-hover:bg-primary group-hover:text-white transition">
-                        <i class="fa-solid ${s.icon || 'fa-cube'}"></i>
-                    </div>
+                <div class="bg-cardBg p-8 rounded-3xl border border-slate-800 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-xl"><i class="fa-solid ${s.icon}"></i></div>
                     <h3 class="text-xl font-bold text-white">${s.title}</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">${s.desc}</p>
+                    <p class="text-slate-400 text-sm">${s.desc}</p>
                 </div>
             `).join('');
 
             document.getElementById('portfolio-container').innerHTML = (data.portfolio || []).map(p => `
-                <div class="group relative rounded-3xl overflow-hidden bg-cardBg border border-slate-800 shadow-xl">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg/80 via-transparent to-transparent opacity-60"></div>
-                        <span class="absolute top-4 left-4 px-3 py-1 bg-darkBg/80 backdrop-blur-md text-primary text-xs font-bold rounded-lg border border-slate-800">${p.category}</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold text-white group-hover:text-primary transition">${p.title}</h3>
-                    </div>
+                <div class="rounded-3xl overflow-hidden bg-cardBg border border-slate-800">
+                    <img src="${p.image}" class="w-full h-64 object-cover">
+                    <div class="p-6"><h3 class="text-lg font-bold text-white">${p.title}</h3></div>
                 </div>
             `).join('');
 
             document.getElementById('faq-container').innerHTML = (data.faq || []).map(f => `
                 <div class="bg-cardBg p-6 rounded-2xl border border-slate-800 space-y-2">
-                    <h4 class="font-bold text-white text-base flex items-center gap-3">
-                        <i class="fa-solid fa-circle-question text-primary text-sm"></i> ${f.q}
-                    </h4>
-                    <p class="text-slate-400 text-sm pl-7 leading-relaxed">${f.a}</p>
+                    <h4 class="font-bold text-white text-base">${f.q}</h4>
+                    <p class="text-slate-400 text-sm">${f.a}</p>
                 </div>
             `).join('');
 
             checkLoggedUserUI();
         }
 
-        // --- SISTEMA DE CEP (VIACEP) ---
+        // --- MÁSCARAS E VALIDAÇÕES INTELIGENTES ---
+        function mascaraCpf(input) {
+            let v = input.value.replace(/\D/g,"");
+            v = v.replace(/(\d{3})(\d)/,"$1.$2");
+            v = v.replace(/(\d{3})(\d)/,"$1.$2");
+            v = v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+            input.value = v;
+        }
+
+        function validarCpfMatematico(cpf) {
+            cpf = cpf.replace(/[^\d]+/g,'');
+            if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+            let soma = 0, resto;
+            for (let i=1; i<=9; i++) soma += parseInt(cpf.substring(i-1, i)) * (11 - i);
+            resto = (soma * 10) % 11;
+            if ((resto === 10) || (resto === 11)) resto = 0;
+            if (resto !== parseInt(cpf.substring(9, 10))) return false;
+            soma = 0;
+            for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i-1, i)) * (12 - i);
+            resto = (soma * 10) % 11;
+            if ((resto === 10) || (resto === 11)) resto = 0;
+            return resto === parseInt(cpf.substring(10, 11));
+        }
+
+        function mascaraCep(input) {
+            let v = input.value.replace(/\D/g,"");
+            v = v.replace(/(\d{5})(\d)/,"$1-$2");
+            input.value = v;
+        }
+
+        function mascaraTelefone(input) {
+            let v = input.value.replace(/\D/g,"");
+            let flag = "🌍";
+            if (v.startsWith("55")) {
+                flag = "🇧🇷";
+                v = v.substring(2);
+                if (v.length > 0) v = "+55 (" + v;
+                if (v.length > 7) v = v.slice(0, 4) + ") " + v.slice(4, 9) + "-" + v.slice(9, 13);
+            } else if (v.length > 0) {
+                v = "+" + v;
+            }
+            document.getElementById('country-flag').innerText = flag;
+            input.value = v;
+        }
+
         async function consultarCep(cep) {
             const cepLimpo = cep.replace(/\D/g, '');
             if (cepLimpo.length !== 8) return;
@@ -523,16 +466,15 @@
                 } else {
                     alert("CEP não encontrado.");
                 }
-            } catch (err) {
-                console.error("Erro ao buscar CEP", err);
-            }
+            } catch (err) { console.error(err); }
         }
 
-        // --- SISTEMA DE CONTAS E LOGIN ---
+        // --- SISTEMA DE CONTAS E SESSÃO CORRIGIDO ---
         function openAuthModal() {
             document.getElementById('auth-modal').classList.remove('hidden');
             const logged = localStorage.getItem('prisma_logged_user');
             if (logged) {
+                document.getElementById('auth-tabs-header').classList.add('hidden');
                 document.getElementById('auth-login-view').classList.add('hidden');
                 document.getElementById('auth-register-view').classList.add('hidden');
                 document.getElementById('auth-dashboard-view').classList.remove('hidden');
@@ -541,13 +483,12 @@
                 document.getElementById('user-display-email').innerText = user.email;
                 renderUserOrders(user.email);
             } else {
+                document.getElementById('auth-tabs-header').classList.remove('hidden');
                 switchAuthTab('login');
             }
         }
 
-        function closeAuthModal() {
-            document.getElementById('auth-modal').classList.add('hidden');
-        }
+        function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
 
         function switchAuthTab(tab) {
             if (tab === 'login') {
@@ -563,32 +504,61 @@
             }
         }
 
-        // Cadastro de usuário
+        // Cadastro com validações rigorosas (E-mail duplicado, CPF válido e duplicado)
         document.getElementById('register-user-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const newUser = {
-                name: document.getElementById('reg-name').value,
-                email: document.getElementById('reg-email').value,
-                senha: document.getElementById('reg-senha').value,
-                phone: document.getElementById('reg-phone').value,
-                cpf: document.getElementById('reg-cpf').value,
-                endereco: `${document.getElementById('reg-endereco').value}, nº ${document.getElementById('reg-numero').value} (CEP: ${document.getElementById('reg-cep').value})`
-            };
+            const errBox = document.getElementById('register-error');
+            errBox.classList.add('hidden');
 
-            let users = JSON.parse(localStorage.getItem('prisma_users_db') || '[]');
-            if (users.some(u => u.email === newUser.email)) {
-                alert("Este e-mail já está cadastrado!");
+            const email = document.getElementById('reg-email').value.trim();
+            const cpf = document.getElementById('reg-cpf').value.trim();
+            const senha = document.getElementById('reg-senha').value;
+
+            if (senha.length < 6) {
+                errBox.innerText = "A senha deve ter pelo menos 6 caracteres.";
+                errBox.classList.remove('hidden');
                 return;
             }
+
+            if (!validarCpfMatematico(cpf)) {
+                errBox.innerText = "CPF inválido! Verifique os dígitos informados.";
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('prisma_users_db') || '[]');
+            
+            if (users.some(u => u.email === email)) {
+                errBox.innerText = "Este e-mail já está cadastrado em outra conta!";
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            if (users.some(u => u.cpf === cpf)) {
+                errBox.innerText = "Este CPF já está cadastrado no sistema!";
+                errBox.classList.remove('hidden');
+                return;
+            }
+
+            const newUser = {
+                name: document.getElementById('reg-name').value,
+                email: email,
+                senha: senha,
+                phone: document.getElementById('reg-phone').value,
+                cpf: cpf,
+                endereco: `${document.getElementById('reg-endereco').value}, nº ${document.getElementById('reg-numero').value}`
+            };
+
             users.push(newUser);
             localStorage.setItem('prisma_users_db', JSON.stringify(users));
             localStorage.setItem('prisma_logged_user', JSON.stringify(newUser));
+            
             alert("Conta criada com sucesso!");
-            closeAuthModal();
+            openAuthModal();
             renderSite();
         });
 
-        // Login de usuário
+        // Login
         document.getElementById('login-user-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -598,16 +568,19 @@
 
             if (found) {
                 localStorage.setItem('prisma_logged_user', JSON.stringify(found));
-                closeAuthModal();
+                openAuthModal();
                 renderSite();
             } else {
                 document.getElementById('login-user-error').classList.remove('hidden');
             }
         });
 
+        // Logout Corrigido e Imediato
         function logoutUser() {
             localStorage.removeItem('prisma_logged_user');
-            closeAuthModal();
+            document.getElementById('auth-dashboard-view').classList.add('hidden');
+            document.getElementById('auth-tabs-header').classList.remove('hidden');
+            switchAuthTab('login');
             renderSite();
         }
 
@@ -617,7 +590,6 @@
             if (logged) {
                 const user = JSON.parse(logged);
                 authBtnText.innerText = user.name.split(' ')[0];
-                // Preenche formulário de orçamento automaticamente se logado
                 document.getElementById('quote-name').value = user.name;
                 document.getElementById('quote-email').value = user.email;
                 document.getElementById('quote-phone').value = user.phone;
@@ -638,90 +610,51 @@
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-xs space-y-1">
                     <div class="flex justify-between font-bold text-white">
                         <span>${o.projectType}</span>
-                        <span class="text-primary">${o.status || 'Em Análise'}</span>
+                        <span class="text-primary">${o.status}</span>
                     </div>
-                    <p class="text-slate-400">Qtd: ${o.qty} | Material: ${o.material} | Cor: ${o.color}</p>
+                    <p class="text-slate-400">Qtd: ${o.qty} | Material: ${o.material}</p>
                 </div>
             `).join('');
         }
 
-        // Envio de Orçamento
         document.getElementById('quote-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const newQuote = {
-                name: document.getElementById('quote-name').value,
                 email: document.getElementById('quote-email').value,
-                phone: document.getElementById('quote-phone').value,
                 projectType: document.getElementById('quote-project-type').value,
                 qty: document.getElementById('quote-qty').value,
-                color: document.getElementById('quote-color').value,
                 material: document.getElementById('quote-material').value,
-                desc: document.getElementById('quote-desc').value,
-                status: "Em Análise",
-                date: new Date().toLocaleDateString()
+                status: "Em Análise"
             };
-
             let allQuotes = JSON.parse(localStorage.getItem('prisma_quotes_db') || '[]');
             allQuotes.push(newQuote);
             localStorage.setItem('prisma_quotes_db', JSON.stringify(allQuotes));
-
-            const feedback = document.getElementById('form-feedback');
-            feedback.classList.remove('hidden');
-            feedback.innerText = "Orçamento enviado com sucesso! Salvo em seu histórico de cliente.";
+            
+            const fb = document.getElementById('form-feedback');
+            fb.classList.remove('hidden');
+            fb.innerText = "Orçamento enviado com sucesso e vinculado à sua conta!";
             this.reset();
-            checkLoggedUserUI();
-            setTimeout(() => feedback.classList.add('hidden'), 6000);
+            setTimeout(() => fb.classList.add('hidden'), 5000);
         });
 
-        // --- PAINEL ADMIN ---
-        let editableData = {};
-        function openAdminModal() {
-            document.getElementById('admin-modal').classList.remove('hidden');
-            document.getElementById('admin-auth-view').classList.remove('hidden');
-            document.getElementById('admin-content-view').classList.add('hidden');
-            document.getElementById('admin-password-input').value = '';
-            document.getElementById('admin-login-error').classList.add('hidden');
-        }
+        // Painel Admin
+        function openAdminModal() { document.getElementById('admin-modal').classList.remove('hidden'); }
         function closeAdminModal() { document.getElementById('admin-modal').classList.add('hidden'); }
-
         document.getElementById('admin-login-form').addEventListener('submit', function(e) {
             e.preventDefault();
             if (document.getElementById('admin-password-input').value === 'admin123') {
                 document.getElementById('admin-auth-view').classList.add('hidden');
                 document.getElementById('admin-content-view').classList.remove('hidden');
-                editableData = JSON.parse(JSON.stringify(getSiteData()));
-                document.getElementById('admin-brand-input').value = editableData.brandName;
-                renderAdminLists();
-            } else {
-                document.getElementById('admin-login-error').classList.remove('hidden');
-            }
+                document.getElementById('admin-brand-input').value = getSiteData().brandName;
+            } else { document.getElementById('admin-login-error').classList.remove('hidden'); }
         });
-
-        function renderAdminLists() {
-            document.getElementById('admin-services-list').innerHTML = editableData.services.map((s, idx) => `
-                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center gap-3">
-                    <input type="text" value="${s.title}" onchange="editableData.services[${idx}].title = this.value" class="w-full px-3 py-1.5 bg-slate-800 rounded-lg text-white text-xs font-semibold">
-                    <button onclick="editableData.services.splice(${idx},1); renderAdminLists();" class="text-rose-400 p-2"><i class="fa-solid fa-trash text-sm"></i></button>
-                </div>
-            `).join('');
-
-            document.getElementById('admin-portfolio-list').innerHTML = editableData.portfolio.map((p, idx) => `
-                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center gap-3">
-                    <input type="text" value="${p.title}" onchange="editableData.portfolio[${idx}].title = this.value" class="w-full px-3 py-1.5 bg-slate-800 rounded-lg text-white text-xs font-semibold">
-                    <button onclick="editableData.portfolio.splice(${idx},1); renderAdminLists();" class="text-rose-400 p-2"><i class="fa-solid fa-trash text-sm"></i></button>
-                </div>
-            `).join('');
-        }
-
-        function addAdminService() { editableData.services.push({title: "Novo Serviço", desc: "Descrição"}); renderAdminLists(); }
-        function addAdminPortfolio() { editableData.portfolio.push({title: "Novo Projeto", category: "Geral", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"}); renderAdminLists(); }
-
         function saveAdminChanges() {
-            editableData.brandName = document.getElementById('admin-brand-input').value;
-            localStorage.setItem('prisma_complete_site_data', JSON.stringify(editableData));
+            let data = getSiteData();
+            data.brandName = document.getElementById('admin-brand-input').value;
+            localStorage.setItem('prisma_complete_site_data', JSON.stringify(data));
             closeAdminModal();
             renderSite();
-            alert("Alterações salvas e publicadas!");
+            alert("Salvo com sucesso!");
         }
 
         window.addEventListener('DOMContentLoaded', renderSite);
