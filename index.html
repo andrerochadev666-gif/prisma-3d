@@ -366,7 +366,7 @@
                     <button type="submit" id="btn-enviar-codigo" class="w-full py-3 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold text-sm shadow-lg shadow-primary/30 transition mt-2">Enviar Código por E-mail</button>
                 </form>
 
-                <!-- Etapa 2: Validação por Código Real de E-mail -->
+                <!-- Etapa 2: Validação por Código Real de E-mail (Com botão de reenviar) -->
                 <form id="register-verify-form" class="space-y-4 hidden">
                     <div class="p-4 bg-slate-900 rounded-2xl border border-slate-800 text-center space-y-2">
                         <div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center mx-auto text-lg"><i class="fa-solid fa-envelope-circle-check"></i></div>
@@ -379,6 +379,9 @@
                     </div>
                     <div id="verify-error" class="hidden text-rose-400 text-xs font-semibold text-center"></div>
                     <button type="button" onclick="concluirValidacaoEmailReal()" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition">Validar Conta e Concluir</button>
+                    <div class="text-center pt-2">
+                        <button type="button" onclick="reenviarCodigoCadastro()" class="text-xs text-primary hover:underline font-semibold">Não recebeu? Enviar código novamente</button>
+                    </div>
                 </form>
             </div>
 
@@ -422,7 +425,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE INTEGRAÇÃO COM EMAILJS -->
+    <!-- SCRIPT COMPLETO E OTIMIZADO -->
     <script>
         const defaultSiteData = {
             brandName: "Prisma 3D",
@@ -554,13 +557,19 @@
                 document.getElementById('auth-dashboard-view').classList.add('hidden');
                 document.getElementById('register-user-form').reset();
                 document.getElementById('login-user-form').reset();
+                document.getElementById('verify-code-input').value = "";
                 document.getElementById('register-user-form').classList.remove('hidden');
                 document.getElementById('register-verify-form').classList.add('hidden');
                 switchAuthTab('login');
             }
         }
 
-        function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
+        function closeAuthModal() { 
+            document.getElementById('auth-modal').classList.add('hidden');
+            document.getElementById('register-user-form').reset();
+            document.getElementById('login-user-form').reset();
+            document.getElementById('verify-code-input').value = "";
+        }
 
         function switchAuthTab(tab) {
             document.getElementById('auth-login-view').classList.add('hidden');
@@ -574,6 +583,8 @@
                 document.getElementById('tab-login-btn').className = "font-bold text-primary pb-1 border-b-2 border-primary text-sm";
             } else if (tab === 'register') {
                 document.getElementById('auth-register-view').classList.remove('hidden');
+                document.getElementById('register-user-form').reset();
+                document.getElementById('verify-code-input').value = "";
                 document.getElementById('register-user-form').classList.remove('hidden');
                 document.getElementById('register-verify-form').classList.add('hidden');
                 document.getElementById('tab-register-btn').className = "font-bold text-primary pb-1 border-b-2 border-primary text-sm";
@@ -587,7 +598,7 @@
         let tempPendingUser = null;
         let generatedEmailCode = "";
 
-        // Envio do código de cadastro via EmailJS (Service ID correto: service_44u285g / Template ID correto: template_fmjwprq)
+        // Envio do código de cadastro via EmailJS (template_h6egiwi)
         document.getElementById('register-user-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const errBox = document.getElementById('register-error');
@@ -639,29 +650,48 @@
                 endereco: `${document.getElementById('reg-endereco').value}, nº ${document.getElementById('reg-numero').value}`
             };
 
+            gerarEEnviarNovoCodigo();
+        });
+
+        // Função para gerar novo código e enviar para o e-mail exato do cliente com o novo Template ID
+        function gerarEEnviarNovoCodigo() {
             generatedEmailCode = Math.floor(100000 + Math.random() * 900000).toString();
             
             const btnSubmit = document.getElementById('btn-enviar-codigo');
-            btnSubmit.innerText = "Enviando e-mail real...";
-            btnSubmit.disabled = true;
+            if(btnSubmit) {
+                btnSubmit.innerText = "Enviando e-mail real...";
+                btnSubmit.disabled = true;
+            }
 
-            emailjs.send("service_44u285g", "template_fmjwprq", {
-                to_email: email,
+            // Enviando explicitamente para o e-mail inserido pelo cliente com o novo Template ID
+            emailjs.send("service_44u285g", "template_h6egiwi", {
+                to_email: tempPendingUser.email,
+                email: tempPendingUser.email,
                 code: generatedEmailCode
             }).then(() => {
-                btnSubmit.innerText = "Enviar Código por E-mail";
-                btnSubmit.disabled = false;
-                document.getElementById('verify-email-target').innerText = email;
+                if(btnSubmit) {
+                    btnSubmit.innerText = "Enviar Código por E-mail";
+                    btnSubmit.disabled = false;
+                }
+                document.getElementById('verify-email-target').innerText = tempPendingUser.email;
                 document.getElementById('register-user-form').classList.add('hidden');
                 document.getElementById('register-verify-form').classList.remove('hidden');
             }).catch((err) => {
                 console.error("Erro ao enviar e-mail:", err);
-                btnSubmit.innerText = "Enviar Código por E-mail";
-                btnSubmit.disabled = false;
-                errBox.innerText = "Erro ao enviar e-mail. Verifique a conexão com o EmailJS.";
-                errBox.classList.remove('hidden');
+                if(btnSubmit) {
+                    btnSubmit.innerText = "Enviar Código por E-mail";
+                    btnSubmit.disabled = false;
+                }
+                alert("Erro ao enviar e-mail. Verifique a conexão com o EmailJS.");
             });
-        });
+        }
+
+        // Botão para reenviar código (torna o anterior inválido)
+        function reenviarCodigoCadastro() {
+            if (!tempPendingUser) return;
+            alert("Um novo código foi gerado e enviado para o seu e-mail. O código anterior foi invalidado.");
+            gerarEEnviarNovoCodigo();
+        }
 
         function concluirValidacaoEmailReal() {
             const digitado = document.getElementById('verify-code-input').value.trim();
@@ -669,7 +699,7 @@
             errVerify.classList.add('hidden');
 
             if (digitado !== generatedEmailCode) {
-                errVerify.innerText = "Código incorreto!";
+                errVerify.innerText = "Código incorreto ou expirado!";
                 errVerify.classList.remove('hidden');
                 return;
             }
@@ -703,7 +733,7 @@
             }
         });
 
-        // Esqueci a senha real com EmailJS
+        // Esqueci a senha real com EmailJS (atualizado para template_h6egiwi)
         let recoveryEmailCache = "";
         let recoveryCodeCache = "";
 
@@ -723,8 +753,9 @@
             recoveryEmailCache = email;
             recoveryCodeCache = Math.floor(100000 + Math.random() * 900000).toString();
 
-            emailjs.send("service_44u285g", "template_fmjwprq", {
+            emailjs.send("service_44u285g", "template_h6egiwi", {
                 to_email: email,
+                email: email,
                 code: recoveryCodeCache
             }).then(() => {
                 document.getElementById('forgot-step-1').classList.add('hidden');
